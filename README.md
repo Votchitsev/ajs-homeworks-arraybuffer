@@ -1,1 +1,1 @@
-# ajs-homeworks-arraybuffer
+# Домашняя работа по теме «ArrayBuffer»
