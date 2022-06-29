@@ -1,8 +1,7 @@
 export default class Character {
-  
   setAttack(distance) {
     const damage = new Float64Array(5);
-    for (let i = 0; i < damage.length; i++) {
+    for (let i = 0; i < damage.length; i += 1) {
       damage[i] = 1 - (i / 10);
     }
     return this.power * damage[distance - 1];
@@ -10,17 +9,17 @@ export default class Character {
 
   setStoned(distance) {
     const damage = new Float64Array(5);
-    for (let i = 0; i < damage.length; i++) {
+    for (let i = 0; i < damage.length; i += 1) {
       damage[i] = Math.log2(i + 1) * 5;
     }
-    return this.attack(distance) - damage[distance - 1];
+    return this.setAttack(distance) - damage[distance - 1];
   }
 
-  makeAttack(enemy, distance, stoned=false) {
+  makeAttack(enemy, distance, stoned = false) {
     if (stoned) {
-      enemy.health -= this.setStoned(distance);
+      enemy.health = Math.round(enemy.health - this.setStoned(distance));
     } else {
-      enemy.health -= this.setAttack(distance);
-    } 
+      enemy.health = Math.round(enemy.health - this.setAttack(distance));
+    }
   }
 }
