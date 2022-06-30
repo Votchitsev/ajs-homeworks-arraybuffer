@@ -1,5 +1,5 @@
-import Daemon from '../daemon.js';
-import Magician from '../magician.js';
+import Daemon from '../task1/daemon.js';
+import Magician from '../task1/magician.js';
 
 const daemon = new Daemon();
 const magician = new Magician();
